@@ -1,0 +1,1103 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }  
+         
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>Master.sikuli\Master.sikuli</h2> <a href="Master.sikuli\Master.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">from</span> sikuli <span class="kw">import</span> *
+<span class="cmt"># works on all platforms
+</span><span class="kw">import</span> os
+myPath = <span class="str">"Q:\Donald\FR\FR ADV\NewPNL"</span>
+Settings.MinSimilarity=<span class="dig">0.9</span>
+Settings.MonthVal = <span class="str">" FY14 Feb"</span>   <span class="cmt">#&lt;--------------------Don't forget to change this#########################################</span>
+Settings.LocationCBS = <span class="str">"Q:\Donald\FR\FR ADV\Output\\"</span>
+
+<span class="cmt"># get the directory containing your running .sikuli
+</span><span class="cmt">#myPath = os.path.dirname(getBundlePath("dir"))
+</span><span class="kw">if</span> <span class="kw">not</span> myPath <span class="kw">in</span> sys.path: sys.path.append(myPath)
+
+<span class="cmt"># now you can import every .sikuli in the same directory
+</span>App.open(<span class="str">'"C:\\Program Files\\Internet Explorer\\iexplore.exe" "https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/reporttree.aspx?subdomain=1&amp;Tab=F"'</span>)
+
+<span class="cmt">###########################################ADV PnL Reports#####################################################
+</span>reportsToRun = range(<span class="dig">83</span>,<span class="dig">95</span>)
+<span class="cmt">#reportsToRun in range(48)
+</span><span class="cmt">###between 10 and 47 is y in range(10,48)
+</span><span class="kw">for</span> i <span class="kw">in</span> reportsToRun:
+    <span class="skw">wait</span> (Pattern(<img src="StandardReoo.png" />).similar(<span class="dig">0.87</span>),FOREVER)
+    mouseMove(Location(<span class="dig">416</span>,<span class="dig">422</span>))
+    <span class="kw">if</span> i == <span class="dig">1</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=95965&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV APAC BRS Core by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">2</span>:
+                <span class="skw">wait</span>(<span class="dig">2</span>)
+                <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+                <span class="skw">wait</span>(<span class="dig">2</span>)
+                <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=84940&amp;reportTypeID=1"</span> + Key.ENTER)
+                <span class="skw">wait</span>(<span class="dig">5</span>)
+                Settings.plname = Settings.LocationCBS +<span class="str">"ADV APAC by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+                <span class="kw">import</span> saveGdPL
+                reload(saveGdPL)
+                saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">3</span>:
+                <span class="skw">wait</span>(<span class="dig">2</span>)
+                <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+                <span class="skw">wait</span>(<span class="dig">2</span>)
+                <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=85885&amp;reportTypeID=1"</span> + Key.ENTER)
+                <span class="skw">wait</span>(<span class="dig">5</span>)
+                Settings.plname = Settings.LocationCBS +<span class="str">"ADV APAC incl FSO by SSL"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+                <span class="kw">import</span> saveGdPL
+                reload(saveGdPL)
+                saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">4</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=69640&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV APAC ITRA"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">5</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=80602&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV APAC PI FSO"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">6</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=68575&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV APAC PI incl FSO"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">7</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=86185&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV APAC PI"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">8</span>:
+                <span class="skw">wait</span>(<span class="dig">2</span>)
+                <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+                <span class="skw">wait</span>(<span class="dig">2</span>)
+                <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=96462&amp;reportTypeID=1"</span> + Key.ENTER)
+                <span class="skw">wait</span>(<span class="dig">5</span>)
+                Settings.plname = Settings.LocationCBS +<span class="str">"ADV APAC Risk Core by SSLs"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+                <span class="kw">import</span> saveGdPL
+                reload(saveGdPL)
+                saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">9</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=71483&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV APAC Risk FSO by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">10</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=91504&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV APAC Risk FSO by SSLs"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">11</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=65746&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV APAC Risk incl FSO by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">12</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=71483&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV APAC Risk incl FSO by SSLs"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">13</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=95968&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV ASEAN Core by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">14</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=96167&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV ASEAN Core by SSLs"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">15</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=95969&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV ASEAN ITRA by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">16</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=401&amp;myreportid=95972&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV ASEAN ITRA by Markets_until GM before PNC"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">17</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=71632&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV ASEAN PI by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">18</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=401&amp;myreportid=95975&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV ASEAN PI by Markets_until GM before PNC"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">19</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=71632&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV ASEAN PI exFSO"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">20</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=95970&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV ASEAN Risk by Markets"</span>+ Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">21</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=401&amp;myreportid=95974&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV ASEAN Risk by Markets_until GM before PNC"</span>+ Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">22</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=73112&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV FSO by Markets"</span>+ Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">23</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=70494&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV FSO by SSLs"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">24</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=71365&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV GC Core by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">25</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=71365&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV GC exFSO by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">26</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=91121&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV GC FSO AS by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">27</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=73743&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV GC FSO by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">28</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=71141&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV GC FSO by SSL "</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">29</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=91120&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV GC FSO FSRM by Markets  "</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i ==<span class="dig">30</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=91122&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV GC FSO Risk (excl FSRM &amp; AS) by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">31</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=74104&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV GC incl FSO by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">32</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=401&amp;myreportid=96166&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV GU by SSLs_until GM before PNC"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">33</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=66967&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV HK Core By SSLs"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">34</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=401&amp;myreportid=95978&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV IN by SSLs_until GM before PNC"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">35</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=79851&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV ITRA GC Core by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">36</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=401&amp;myreportid=95983&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV LK by SSLs_until GM before PNC"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">37</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=401&amp;myreportid=95982&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV MV by SSLs_until GM before PNC"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">38</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=401&amp;myreportid=95977&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV MY by SSLs_until GM before PNC"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">39</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=95961&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV Oceania Core by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">40</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=94376&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV Other Advisory GC ex FSO by Markets"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">41</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=94375&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV Other Advisory GC FSO by Markets "</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">42</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=401&amp;myreportid=95979&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV PH by SSLs_until GM before PNC"</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">43</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=90962&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV PI Commercial GC Core by Markets  "</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">44</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=68828&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV PI Energy GC Core by Markets  "</span>+Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">45</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=65353&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV PI GC Core by Markets "</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">46</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=76300&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV PI GC FSO by Markets"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">47</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=79028&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV PI GC incl FSO by Markets"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">48</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=90961&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS +<span class="str">"ADV PI General GC Core by Markets"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">49</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=74648&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"ADV PI Public GC Core by Markets"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+    <span class="kw">if</span> i == <span class="dig">50</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=80554&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"ADV PI TCE GC Core by Markets"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">51</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=70732&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"ADV Risk GC Core by Markets"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">52</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=401&amp;myreportid=95976&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"ADV SG by SSLs until GM before PNC"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">53</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=401&amp;myreportid=95980&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"ADV TH by SSLs until GM before PNC"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">54</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=401&amp;myreportid=95981&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"ADV VN by SSLs until GM before PNC"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">55</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=89739&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"AS FSO APAC by Markets"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">56</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=89447&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Driver ADV - APAC Risk (incl FSO) "</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">57</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=95964&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Driver ADV - APAC Risk AS"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">58</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=89454&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Driver ADV - APAC ITRA"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">59</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=95963&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Driver ADV - APAC Risk BRS"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">60</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=96168&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Driver ADV - APAC Risk FSRM"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">61</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=95925&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers ADV FSO - AS"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">62</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=95921&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers ADV FSO  - BRS"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">63</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=95927&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers ADV FSO  - FSO Korea"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">64</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=95929&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers ADV FSO  - FSO Oceania"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">65</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=95930&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers ADV FSO  - FSO Singapore"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">66</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=95928&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers ADV FSO  - FSO Vietnam"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">67</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=95923&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers ADV FSO  - FSRM"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">68</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=95920&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers ADV FSO  - ITRA"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">69</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=95926&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers ADV FSO  - PI"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">70</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=95919&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers - ADV FSO"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">71</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=94367&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers - ADV GC Core"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">72</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=94368&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers - ADV GC FSO"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">73</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=94366&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers - ADV GC incl FSO"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">74</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=95931&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers - ADV Korea Core "</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">75</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=95962&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers - APAC ADV"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">76</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=92500&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers  - ASEAN ITRA"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">77</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=94889&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers  - ASEAN PI"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">78</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=92499&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers  - ASEAN Risk"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">79</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=373&amp;myreportid=92502&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Finance Business Drivers  - ASEAN"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">80</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=89451&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"FSRM FSO APAC by Markets"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">81</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=399&amp;myreportid=73112&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"Risk FSO APAC by Markets"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">82</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=413&amp;myreportid=70837&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"MTD YTD APAC Report GEO All"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">83</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=413&amp;myreportid=76321&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"MTD YTD APAC Report GEO ASU"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">84</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=413&amp;myreportid=65901&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"MTD YTD APAC Report GEO TAX"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">85</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=413&amp;myreportid=71385&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"MTD YTD APAC Report GEO ADV"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">86</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=413&amp;myreportid=77578&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"MTD YTD APAC Report GEO TAS"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">87</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=413&amp;myreportid=66042&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"MTD YTD APAC Report GEO CBS"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">88</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=413&amp;myreportid=94377&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"MTD YTD APAC Report GEO ACR"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">89</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=413&amp;myreportid=77068&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"MTD YTD APAC Report Mngm ALL"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i ==<span class="dig">90</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=413&amp;myreportid=66639&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"MTD YTD APAC Report Mngm ASU"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">91</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=413&amp;myreportid=72227&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"MTD YTD APAC Report Mngm TAX"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">92</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=413&amp;myreportid=77476&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"MTD YTD APAC Report Mngm ADV"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">93</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=413&amp;myreportid=66714&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"MTD YTD APAC Report Mngm TAS"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">94</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=413&amp;myreportid=74723&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"MTD YTD APAC Report Mngm CBS"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="kw">if</span> i == <span class="dig">95</span>:
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"d"</span>, KEY_ALT);
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"https://mybusiness.ey.net/fr/_layouts/ey.erp.financialreporting.web/ReportViewerPagev1.aspx?reportid=413&amp;myreportid=94378&amp;reportTypeID=1"</span> + Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        Settings.plname = Settings.LocationCBS + <span class="str">"MTD YTD APAC Report Mngm ACR"</span> + Settings.MonthVal + <span class="str">".xls"</span>
+        <span class="kw">import</span> saveGdPL
+        reload(saveGdPL)
+        saveGdPL.SaveAsPLGood()
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+
+        <span class="cmt">####8 9 19 22 48 49 50 51
+</span>    <span class="kw">if</span> exists(<img src="mOinFolder-10.png" />):
+        <span class="kw">print</span>(<span class="str">"1"</span>)
+        waitVanish(<img src="mOinFolder-11.png" />,FOREVER)
+        <span class="kw">print</span>(<span class="str">"2"</span>)
+    <span class="kw">print</span>(<span class="str">"3"</span>)
+    <span class="skw">wait</span>(Pattern(<img src="ReportsFinan-8.png" />).targetOffset(-<span class="dig">3</span>,<span class="dig">1</span>),FOREVER)
+    <span class="kw">print</span>(<span class="str">"4"</span>)
+    <span class="skw">click</span>(Pattern(<img src="ReportsFinan-9.png" />).targetOffset(<span class="dig">0</span>,<span class="dig">1</span>))
+</pre>
+</body>
+</html>
